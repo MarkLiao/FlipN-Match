@@ -1,7 +1,11 @@
 <resources>
-    <string name="app_name">MatchGame</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">FlipN-Match</string>
     <string name="action_settings">Settings</string>
+    <string name="FourByFour">4 x 4</string>
+    <string name="SixBySix">6 x 6</string>
+    <string name="Diverse6By6">Challenge Mode</string>
+    <string name="SCORE">Score:</string>
+    <string name="TIME">Time:</string>
     <string name="placeHolder">0</string>
+
 </resources>

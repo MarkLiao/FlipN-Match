@@ -83,26 +83,28 @@ public class Diverse6by6Fragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.sixbysix, container, false);
 
-        Rows = new boolean[6];
-        existingNumbers = new int[15];
+        //initialize all variables
+        Rows = new boolean[6]; //array indicating whether a row is visible or not
+        existingNumbers = new int[16]; //array to hold the number of existing number pairs in round
 
-        RowCount = 0;
+        RowCount = 0; //use to keep track of number of rows that should be displayed in the current round
 
-        numCardClicked = 0;
-        SCORE = 0;
-        multiplier = 1;
-        levelsCompleted = 0;
-
-        collectedPairs = 0;
-        pairsInRound = 0;
+        numCardClicked = 0; //variable to indicate the number of cards currently clicked
+        SCORE = 0; //variable to hold the users score
+        multiplier = 1; //variable to hold current multiplier
+        levelsCompleted = 0; //variable to hold the number of levels the user has completed
 
 
-        numOfGuesses = 0;
-        numOfCorrectGuesses = 0;
+        collectedPairs = 0; //variable to hold the current number of pairs the user has collected in the round
+        pairsInRound = 0; //variable to hold the total number of pairs in the current round
 
-        mRandom = new SecureRandom();
-        handler = new Handler();
+        numOfGuesses = 0; //variable to hold the total number of guesses the user has made
+        numOfCorrectGuesses = 0; //variable to hold the total number of correct guesses the user has made
 
+        mRandom = new SecureRandom(); //used to create a random number
+        handler = new Handler(); //used to handle delays
+
+        //initialize animations
         card1Animation1 = AnimationUtils.loadAnimation(getActivity(),R.anim.flip_to_mid);
         card1Animation1.setAnimationListener(flip1);
 
@@ -115,6 +117,8 @@ public class Diverse6by6Fragment extends Fragment {
         card2Animation2 = AnimationUtils.loadAnimation(getActivity(),R.anim.mid_to_end);
         card2Animation2.setAnimationListener(flip2);
 
+
+        //intialize layout
         scoreTextView = (TextView)view.findViewById(R.id.scoreTextView);
         timeTextView = (TextView)view.findViewById(R.id.timeTextView);
         timeTextView.setVisibility(View.VISIBLE);
@@ -141,7 +145,7 @@ public class Diverse6by6Fragment extends Fragment {
             }
         }
 
-
+        //start the game
         begin();
 
 
@@ -175,17 +179,20 @@ public class Diverse6by6Fragment extends Fragment {
     }
 
     //randomly place numbers
+    //number 1-13 are basic cards. 1-10 is 1-10, 11 = J, 12 =Q, 13=K, 14 =T+ (Time increase)
+    // 16 = B, CrossHairs that eliminate a random pair on the board, chance it does so is not guaranteed
+    // 15 = JK , Used As A Joker -- has not been implemented yet Joker replaces all pairs on the board
     public void placeNumbers(){
         int pairs = RowCount * 3; //times 3 instead of  6 cuz you you need pairs
         for (int i = 0; i < pairs; i++){
             int tempCounter =0;
-            //14 for Timer, 15 for Crosiar
+            //14 for Timer, 15 for Joker, 16 for Crosshairs
             int tempNum;
             if (levelsCompleted < 7){
-                tempNum = mRandom.nextInt(14);
-            }
-            else{ //woo bombs/Crosairs!
                 tempNum = mRandom.nextInt(15);
+            }
+            else{ //woo bombs/Crosshairs!
+                tempNum = mRandom.nextInt(16);
             }
 
             while(tempCounter < 2){
@@ -217,6 +224,10 @@ public class Diverse6by6Fragment extends Fragment {
                         tempCounter++;
                     }
                     else if ((tempNum+1) == 15){
+                        textView.setText("JK");
+                        tempCounter++;
+                    }
+                    else if ((tempNum+1) == 16){
                         textView.setText("B");
                         tempCounter++;
                     }
@@ -483,9 +494,24 @@ public class Diverse6by6Fragment extends Fragment {
                 existingNumbers[13]--;
             }
 
-            else if (c1.getText().toString().equals("B")){
-                WIPE();
+            else if (c1.getText().toString().equals("JK")){
+                if(collectedPairs + 1 == pairsInRound) {
+                    //means its the last pair. If it is the last pair do nothing
+                }
+                else {
+                    REPLACE();
+                }
                 existingNumbers[14]--;
+            }
+
+            else if (c1.getText().toString().equals("B")){
+                if(collectedPairs + 1 == pairsInRound){
+                    //means do nothing its the last pair
+                }
+                else {
+                    WIPE();
+                }
+                existingNumbers[15]--;
             }
             else {
                 if(c1String.equals("J")){
@@ -508,7 +534,32 @@ public class Diverse6by6Fragment extends Fragment {
         }
     }
 
-    //make another array for these numbers and see if it exists! WIN
+    //create new pairs but with number of pairs left
+    public void REPLACE(){
+
+        int pairsLeft = pairsInRound - collectedPairs;
+
+        clearBoard();
+        for (int i = 0; i < pairsLeft; i++){
+            int tempCounter = 0;
+            int newNum = mRandom.nextInt(16);
+            while(tempCounter < 2){
+                int tempRow = mRandom.nextInt(6);
+                LinearLayout row = funSixBySix[tempRow];
+                int tempCol = mRandom.nextInt(6);
+                TextView textView = (TextView)row.getChildAt(tempCol);
+                if(textView.getText().toString().equals("0")){
+                    textView.setText("" + newNum);
+                    textView.setVisibility(View.VISIBLE);
+                    textView.setClickable(true);
+                    tempCounter++;
+                }
+            }
+        }
+
+    }
+
+
     public void WIPE(){
         //randomly destroy a pair if it exists
         int tempRandNum = mRandom.nextInt(13);
@@ -522,6 +573,7 @@ public class Diverse6by6Fragment extends Fragment {
 
     }
 
+    //randomly destroy a pair on the board
     public void disintegrate(int tempRandNum){
         String toRemove;
         if((tempRandNum + 1) == 11){
@@ -616,6 +668,10 @@ public class Diverse6by6Fragment extends Fragment {
                         textView.setTextColor(Color.TRANSPARENT);
                         textView.setBackground(getResources().getDrawable(R.mipmap.crosair));
                     }
+                    else if (textView.getText().toString().equals("JK")){
+                        textView.setTextColor(Color.TRANSPARENT);
+                        textView.setBackground(getResources().getDrawable(R.mipmap.replace));
+                    }
                     else {
                         textView.setTextColor(Color.WHITE);
                         textView.setBackground(getResources().getDrawable(R.mipmap.cardfront));
@@ -665,6 +721,10 @@ public class Diverse6by6Fragment extends Fragment {
                         textView.setTextColor(Color.TRANSPARENT);
                         textView.setBackground(getResources().getDrawable(R.mipmap.crosair));
                     }
+                    else if (textView.getText().toString().equals("JK")){
+                        textView.setTextColor(Color.TRANSPARENT);
+                        textView.setBackground(getResources().getDrawable(R.mipmap.replace));
+                    }
                     else {
                         textView.setTextColor(Color.WHITE);
                         textView.setBackground(getResources().getDrawable(R.mipmap.cardfront));
@@ -693,7 +753,7 @@ public class Diverse6by6Fragment extends Fragment {
     public void displayGameOver(){
 
         clearBoard();
-        for (int i = 0; i < 15; i++){
+        for (int i = 0; i < 16; i++){
             existingNumbers[i]=0;
         }
         LinearLayout row3 = funSixBySix[2];
@@ -740,8 +800,6 @@ public class Diverse6by6Fragment extends Fragment {
 
         @Override
         public void onFinish() {
-            //make a dialog pop out and end game
-            //Toast.makeText(getActivity(),("" + 0), Toast.LENGTH_SHORT).show();
             hasTimerStart = false;
             disableClickable();
             timeTextView.setText("Time: 0");
@@ -768,6 +826,9 @@ public class Diverse6by6Fragment extends Fragment {
                     dialog.dismiss();
                 }
             });
+
+
+            //should implement share to facebook option -look into facebook api!
             builder.show();
 
         }
@@ -778,7 +839,6 @@ public class Diverse6by6Fragment extends Fragment {
             timeTextView.setText("Time: " + timeLeft/INTERVAL);
             final Toast tempToast = Toast.makeText(getActivity(),("" + millisUntilFinished/INTERVAL), Toast.LENGTH_SHORT);
             if(millisUntilFinished < 6000){
-                //Toast.makeText(getActivity(),("" + millisUntilFinished/ INTERVAL), Toast.LENGTH_SHORT).show();
                 tempToast.show();
                 handler.postDelayed(new Runnable(){
                     @Override

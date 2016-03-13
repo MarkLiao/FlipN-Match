@@ -17,7 +17,7 @@
             android:gravity="center"
             android:layout_gravity="center|bottom"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Score: "
+            android:text="@string/SCORE"
             android:layout_marginTop="5dp"
             android:background="@drawable/cardback"
             android:id="@+id/scoreTextView" />
@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Time: "
+            android:text="@string/TIME"
             android:gravity="center"
             android:layout_gravity="center|bottom"
             android:layout_marginTop="5dp"
