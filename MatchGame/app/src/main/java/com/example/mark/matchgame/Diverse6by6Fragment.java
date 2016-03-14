@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.security.SecureRandom;
+import java.util.Vector;
 
 /**
  * Created by Mark on 04/03/2016.
@@ -27,6 +28,7 @@ public class Diverse6by6Fragment extends Fragment {
 
     private SecureRandom mRandom;
     private LinearLayout funSixBySix[];
+
 
     private Animation card1Animation1;
     private Animation card1Animation2;
@@ -60,6 +62,7 @@ public class Diverse6by6Fragment extends Fragment {
 
     private boolean Rows[];
     private int existingNumbers[];
+
     private int RowCount;
 
     private TextView c1;
@@ -76,6 +79,7 @@ public class Diverse6by6Fragment extends Fragment {
     private Handler handler;
 
     private boolean hasTimerStart = false;
+    private boolean wasJk = false;
 
 
     @Override
@@ -86,6 +90,7 @@ public class Diverse6by6Fragment extends Fragment {
         //initialize all variables
         Rows = new boolean[6]; //array indicating whether a row is visible or not
         existingNumbers = new int[16]; //array to hold the number of existing number pairs in round
+
 
         RowCount = 0; //use to keep track of number of rows that should be displayed in the current round
 
@@ -245,6 +250,10 @@ public class Diverse6by6Fragment extends Fragment {
     //clear the board after ever round
     public void clearBoard(){
 
+        for (int i = 0; i < 16; i++){
+            existingNumbers[i]=0;
+        }
+
         for(int i = 0; i < Rows.length;i++){
             Rows[i] = false;
         }
@@ -321,19 +330,32 @@ public class Diverse6by6Fragment extends Fragment {
                 v.startAnimation(card2Animation1);
                 disableClickable();
                 if(check()){
-                    handler.postDelayed(new Runnable(){
+                    handler.postDelayed(new Runnable() {
                         @Override
-                        public void run () {
-                            c1.setBackgroundColor(Color.WHITE);
-                            c1.setTextColor(Color.TRANSPARENT);
-                            c1.setText("-1");
-                            c2.setBackgroundColor(Color.WHITE);
-                            c2.setTextColor(Color.TRANSPARENT);
-                            c2.setText("-1");
-                            enableClickable();
-                        }
-                    },350);
+                        public void run() {
+                                if(c1.getText().toString().equals("JK")){
+                                    wasJk = true;
+                                }
+                                c1.setBackgroundColor(Color.WHITE);
+                                c1.setTextColor(Color.TRANSPARENT);
+                                c1.setText("-1");
+                                c1.setVisibility(View.INVISIBLE);
+                                c2.setBackgroundColor(Color.WHITE);
+                                c2.setTextColor(Color.TRANSPARENT);
+                                c2.setText("-1");
+                                c2.setVisibility(View.INVISIBLE);
+
+                                if (wasJk){
+                                    REPLACE();
+                                    existingNumbers[14]--;
+                                    wasJk = false;
+                                }
+                                enableClickable();
+                            }
+                    }, 350);
                     collectedPairs++;
+                    System.out.println("Pairs Collected: " + collectedPairs + " Pairs In Round: " + pairsInRound);
+
                     if (multiplier > 1 ){
                         Toast.makeText(getActivity(), "" + multiplier + "x points!", Toast.LENGTH_SHORT).show();
                     }
@@ -447,7 +469,7 @@ public class Diverse6by6Fragment extends Fragment {
 
                 hasTimerStart = true;
             }
-        },1000); // 5 seconds till next round
+        },1000); //
     }
 
     //initialize next round
@@ -455,6 +477,7 @@ public class Diverse6by6Fragment extends Fragment {
         clearBoard();
         //use RowCount
         //timeLeft = 0;
+
         collectedPairs = 0;
         pairsInRound = RowCount * 3;
         int tempCounter = 0;
@@ -493,15 +516,8 @@ public class Diverse6by6Fragment extends Fragment {
                 timeTextView.setText("Time: " + (timeLeft + 5000));
                 existingNumbers[13]--;
             }
-
             else if (c1.getText().toString().equals("JK")){
-                if(collectedPairs + 1 == pairsInRound) {
-                    //means its the last pair. If it is the last pair do nothing
-                }
-                else {
-                    REPLACE();
-                }
-                existingNumbers[14]--;
+                //temp holder
             }
 
             else if (c1.getText().toString().equals("B")){
@@ -514,17 +530,14 @@ public class Diverse6by6Fragment extends Fragment {
                 existingNumbers[15]--;
             }
             else {
-                if(c1String.equals("J")){
+                if (c1String.equals("J")) {
                     existingNumbers[10]--;
-                }
-                else if(c1String.equals("Q")){
+                } else if (c1String.equals("Q")) {
                     existingNumbers[11]--;
-                }
-                else if(c1String.equals("K")){
+                } else if (c1String.equals("K")) {
                     existingNumbers[12]--;
-                }
-                else {
-                    existingNumbers[Integer.parseInt(c1String) - 1]--;
+                } else {
+                    existingNumbers[Integer.parseInt(c1String)- 1]--;
                 }
             }
             return true;
@@ -537,27 +550,47 @@ public class Diverse6by6Fragment extends Fragment {
     //create new pairs but with number of pairs left
     public void REPLACE(){
 
-        int pairsLeft = pairsInRound - collectedPairs;
+        int pairsLeft = pairsInRound - collectedPairs; //need to remove one since collected pairs has not been incremented yet
 
         clearBoard();
-        for (int i = 0; i < pairsLeft; i++){
+        for(int k = 0; k < pairsLeft; k++){
             int tempCounter = 0;
-            int newNum = mRandom.nextInt(16);
-            while(tempCounter < 2){
-                int tempRow = mRandom.nextInt(6);
-                LinearLayout row = funSixBySix[tempRow];
-                int tempCol = mRandom.nextInt(6);
-                TextView textView = (TextView)row.getChildAt(tempCol);
-                if(textView.getText().toString().equals("0")){
-                    textView.setText("" + newNum);
+            int num = mRandom.nextInt(15) + 1;
+            while(tempCounter < 2) {
+                int nRow = mRandom.nextInt(6);
+                int nCol = mRandom.nextInt(6);
+
+                LinearLayout row = funSixBySix[nRow];
+                TextView textView = (TextView) row.getChildAt(nCol);
+                if (textView.getText().toString().equals("0")) {
+                    //System.out.println("Row: " + nRow + " Col: " + nCol);
+                    //System.out.println(num);
+                    if (num == 11) {
+                        textView.setText("J");
+                    } else if (num == 12) {
+                        textView.setText("Q");
+                    } else if (num == 13) {
+                        textView.setText("K");
+                    } else if (num == 14) {
+                        textView.setText("T+");
+                    } else if (num == 15) {
+                        textView.setText("JK");
+                    } else {
+                        textView.setText("" + num);
+                    }
                     textView.setVisibility(View.VISIBLE);
                     textView.setClickable(true);
                     tempCounter++;
                 }
             }
+
+            existingNumbers[num-1]++;
         }
 
+
     }
+
+
 
 
     public void WIPE(){
@@ -656,6 +689,11 @@ public class Diverse6by6Fragment extends Fragment {
     public Animation.AnimationListener flip1 = new Animation.AnimationListener(){
         @Override
         public void onAnimationStart(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
             if(animation == card1Animation1){
                 if(cardBack1){ //if the back of card 1 is showing
                     //show back
@@ -686,10 +724,6 @@ public class Diverse6by6Fragment extends Fragment {
             else{
                 cardBack1 = !cardBack1;
             }
-        }
-
-        @Override
-        public void onAnimationEnd(Animation animation) {
 
         }
 
@@ -842,9 +876,9 @@ public class Diverse6by6Fragment extends Fragment {
                 tempToast.show();
                 handler.postDelayed(new Runnable(){
                     @Override
-                        public void run(){
-                            tempToast.cancel();
-                        }
+                    public void run(){
+                        tempToast.cancel();
+                    }
                 },1000);
             }
         }
