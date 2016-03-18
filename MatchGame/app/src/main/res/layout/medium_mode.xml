@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:id="@+id/UserStatsLayout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center|bottom"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/SCORE"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/cardback"
+            android:id="@+id/scoreTextView" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/TIME"
+            android:gravity="center"
+            android:layout_gravity="center|bottom"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/cardback"
+            android:id="@+id/timeTextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2.5dp"
+        android:layout_weight="1"
+        android:id="@+id/sbsLinearLayout1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView17" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView18" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView19" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView20" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView41" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="2.5dp"
+        android:id="@+id/sbsLinearLayout2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView21" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView22" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView23" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView24" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView25" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView42" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginBottom="2.5dp"
+        android:id="@+id/sbsLinearLayout3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView26" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView27" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView28" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView29" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView30" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView43" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="2.5dp"
+        android:id="@+id/sbsLinearLayout4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView31" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView32" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView33" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView34" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView35" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView44" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="2.5dp"
+        android:id="@+id/sbsLinearLayout5">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView46" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView47" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView48" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView49" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView50" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView51" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:id="@+id/sbsLinearLayout6">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView36" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView37" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView38" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView39" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView40" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeHolder"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:background="@mipmap/cardback2"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:textColor="@android:color/transparent"
+            android:id="@+id/textView45" />
+    </LinearLayout>
+
+</LinearLayout>
